@@ -11,7 +11,7 @@ void clearScreen() {
 }
 
 void formatRupiah(int num, char *buffer) {
-    char temp[50]; rev[50];
+    char temp[50], rev[50];
     int i, j = 0, len, pos = 0;
 
     sprintf(temp, "%d", num);
