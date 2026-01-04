@@ -192,6 +192,16 @@ int main() {
             scanf("%s", hurufBelakang);
 
             sprintf(plat, "%s %d %s", hurufDepan, angka, hurufBelakang);
+            printf("\nJenis Cuci:\n");
+            printf(" [1] Ekonomi  - Rp 50.000\n");
+            printf(" [2] Reguler  - Rp 250.000\n");
+            printf(" [3] Premium  - Rp 350.000\n");
+            printf("Pilih: ");
+            scanf("%d", &pilihan);
+
+            if (pilihan == 1) { total = 50000; strcpy(jenis, "Ekonomi"); }
+            else if (pilihan == 2) { total = 250000; strcpy(jenis, "Reguler"); }
+            else { total = 350000; strcpy(jenis, "Premium"); }
     
     return 0;
 }
