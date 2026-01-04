@@ -33,6 +33,58 @@ void formatRupiah(int num, char *buffer) {
     buffer[j] = '\0';
 }
 
+int userExists(const char *username) {
+    FILE *fp = fopen("users.txt", "r");
+    char u[30], p[30];
+    if (!fp) return 0;
+
+    while (fscanf(fp, "%s %s", u, p) != EOF) {
+        if (strcmp(u, username) == 0) {
+            fclose(fp);
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
+void saveUser(const char *username, const char *password) {
+    FILE *fp = fopen("users.txt", "a");
+    if (!fp) return;
+    fprintf(fp, "%s %s\n", username, password);
+    fclose(fp);
+}
+
+int checkLogin(const char *username, const char *password) {
+    FILE *fp = fopen("users.txt", "r");
+    char u[30], p[30];
+    if (!fp) return 0;
+
+    while (fscanf(fp, "%s %s", u, p) != EOF) {
+        if (strcmp(u, username) == 0 && strcmp(p, password) == 0) {
+            fclose(fp);
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
+void saveHistory(const char *username, const char *plat,
+                 const char *jenis, const char *tambahan, int total) {
+    FILE *fp = fopen("history.txt", "a");
+    if (!fp) return;
+    fprintf(fp, "%s|%s|%s|%s|%d\n",
+            username, plat, jenis, tambahan, total);
+    fclose(fp);
+}
+
+void showHistory(const char *username) {
+    FILE *fp = fopen("history.txt", "r");
+    char line[200];
+    int found = 0;
+
+   
 int main() {
 char username[30], password[30];
     char loginUser[30], loginPass[30];
