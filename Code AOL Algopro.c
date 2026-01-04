@@ -203,6 +203,51 @@ int main() {
             if (pilihan == 1) { total = 50000; strcpy(jenis, "Ekonomi"); }
             else if (pilihan == 2) { total = 250000; strcpy(jenis, "Reguler"); }
             else { total = 350000; strcpy(jenis, "Premium"); }
+
+            printf("\nTambahan:\n");
+            printf(" [1] Waxing (+20.000)\n");
+            printf(" [2] Vacuum (+15.000)\n");
+            printf(" [3] Tidak ada\n");
+            printf("Pilih: ");
+            scanf("%d", &tambahan);
+
+            if (tambahan == 1) {
+                total += 20000;
+                strcpy(tambahanText, "Waxing");
+            } else if (tambahan == 2) {
+                total += 15000;
+                strcpy(tambahanText, "Vacuum");
+            } else {
+                strcpy(tambahanText, "Tidak ada");
+            }
+
+            formatRupiah(total, totalFormat);
+
+            clearScreen();
+            printf("====================================\n");
+            printf("           STRUK PEMBAYARAN          \n");
+            printf("====================================\n");
+            printf("User        : %s\n", username);
+            printf("Plat Mobil  : %s\n", plat);
+            printf("Jenis Cuci  : %s\n", jenis);
+            printf("Tambahan    : %s\n", tambahanText);
+            printf("------------------------------------\n");
+            printf("TOTAL BAYAR : Rp %s\n", totalFormat);
+            printf("====================================\n");
+
+            saveHistory(username, plat, jenis, tambahanText, total);
+
+            printf("\nTekan ENTER untuk kembali ke menu...");
+            getchar(); getchar();
+        }
+        else if (menu == 2) {
+            showHistory(username);
+        }
+
+    } while (menu != 3);
+
+    clearScreen();
+    printf("Terima kasih telah menggunakan Car Wash System.\n");
     
     return 0;
 }
