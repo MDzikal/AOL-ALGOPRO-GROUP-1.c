@@ -164,68 +164,34 @@ int main() {
         }
     }
 
-    do {
-        total = 0;
-        system("cls");
-
+     do {
+        clearScreen();
         printf("====================================\n");
-        printf("          CAR WASH SYSTEM \n");
+        printf("          CAR WASH APPLICATION       \n");
         printf("====================================\n");
-        printf("Pilih jenis cuci mobil:\n");
-        printf("1. Cuci Ekonomi     - Rp 50.000\n");
-        printf("2. Cuci Reguler     - Rp 250.000\n");
-        printf("3. Cuci Premium     - Rp 350.000\n");
+        printf("Login sebagai: %s\n", username);
         printf("------------------------------------\n");
-        printf("Masukkan pilihan Anda (1-3): ");
-        scanf("%d", &pilihan);
-
-        switch (pilihan) {
-            case 1: total = 50000; break;
-            case 2: total = 250000; break;
-            case 3: total = 350000; break;
-            default: 
-                printf("Pilihan tidak valid!\n");
-                continue;
-        }
-
-        printf("\nApakah ingin tambahan layanan?\n");
-        printf("1. Waxing (+ Rp 20.000)\n");
-        printf("2. Vacuum Interior (+ Rp 15.000)\n");
-        printf("3. Tidak ada tambahan\n");
-        printf("Pilih (1-3): ");
-        scanf("%d", &tambahan);
-
-        if (tambahan == 1) {
-            total += 20000;
-        } else if (tambahan == 2) {
-            total += 15000;
-        }
-
-        formatRupiah(total, totalFormat);
-
-        printf("\n========= STRUK PEMBAYARAN =========\n");
-        printf("Nama User   : %s\n", loginUser);
-        printf("Plat Mobil  : %s\n", plat);
-        printf("Jenis Cuci  : ");
-        if (pilihan == 1) printf("Cuci Ekonomi\n");
-        else if (pilihan == 2) printf("Cuci Reguler\n");
-        else if (pilihan == 3) printf("Cuci Premium\n");
-
-        printf("Tambahan    : ");
-        if (tambahan == 1) printf("Waxing\n");
-        else if (tambahan == 2) printf("Vacuum Interior\n");
-        else printf("Tidak ada\n");
-
+        printf(" [1] Mulai Car Wash\n");
+        printf(" [2] Lihat Riwayat Aktivitas\n");
+        printf(" [3] Logout\n");
         printf("------------------------------------\n");
-        printf("TOTAL BAYAR : Rp %s\n", totalFormat);
-        printf("====================================\n");
+        printf("Pilih menu: ");
+        scanf("%d", &menu);
 
-        printf("\nApakah ingin input lagi? (y/n): ");
-        scanf(" %c", &ulang);
+        if (menu == 1) {
+            clearScreen();
+            printf("====================================\n");
+            printf("             CAR WASH PAGE           \n");
+            printf("====================================\n");
 
-    } while (ulang == 'y' || ulang == 'Y');
+            printf("Huruf depan plat : ");
+            scanf("%s", hurufDepan);
+            printf("Angka plat       : ");
+            scanf("%d", &angka);
+            printf("Huruf belakang   : ");
+            scanf("%s", hurufBelakang);
 
-    printf("\nTerima kasih telah menggunakan Car Wash System!\n");
+            sprintf(plat, "%s %d %s", hurufDepan, angka, hurufBelakang);
     
     return 0;
 }
