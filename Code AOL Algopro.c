@@ -24,3 +24,8 @@ void formatRupiah(int num, char *buffer) {
     }
     buffer[j] = '\0';
 }
+
+int main() {
+
+    return 0;
+}
