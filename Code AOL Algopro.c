@@ -119,6 +119,21 @@ char username[30], password[30];
         else if (pilihan == 2) printf("Cuci Reguler\n");
         else if (pilihan == 3) printf("Cuci Premium\n");
 
-        
+        printf("Tambahan    : ");
+        if (tambahan == 1) printf("Waxing\n");
+        else if (tambahan == 2) printf("Vacuum Interior\n");
+        else printf("Tidak ada\n");
+
+        printf("------------------------------------\n");
+        printf("TOTAL BAYAR : Rp %s\n", totalFormat);
+        printf("====================================\n");
+
+        printf("\nApakah ingin input lagi? (y/n): ");
+        scanf(" %c", &ulang);
+
+    } while (ulang == 'y' || ulang == 'Y');
+
+    printf("\nTerima kasih telah menggunakan Car Wash System!\n");
+    
     return 0;
 }
