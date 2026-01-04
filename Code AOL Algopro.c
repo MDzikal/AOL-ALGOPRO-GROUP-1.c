@@ -110,6 +110,15 @@ char username[30], password[30];
         }
 
         formatRupiah(total, totalFormat);
+
+        printf("\n========= STRUK PEMBAYARAN =========\n");
+        printf("Nama User   : %s\n", loginUser);
+        printf("Plat Mobil  : %s\n", plat);
+        printf("Jenis Cuci  : ");
+        if (pilihan == 1) printf("Cuci Ekonomi\n");
+        else if (pilihan == 2) printf("Cuci Reguler\n");
+        else if (pilihan == 3) printf("Cuci Premium\n");
+
         
     return 0;
 }
