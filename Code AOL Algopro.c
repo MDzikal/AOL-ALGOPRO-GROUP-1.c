@@ -96,5 +96,20 @@ char username[30], password[30];
                 continue;
         }
 
+        printf("\nApakah ingin tambahan layanan?\n");
+        printf("1. Waxing (+ Rp 20.000)\n");
+        printf("2. Vacuum Interior (+ Rp 15.000)\n");
+        printf("3. Tidak ada tambahan\n");
+        printf("Pilih (1-3): ");
+        scanf("%d", &tambahan);
+
+        if (tambahan == 1) {
+            total += 20000;
+        } else if (tambahan == 2) {
+            total += 15000;
+        }
+
+        formatRupiah(total, totalFormat);
+        
     return 0;
 }
