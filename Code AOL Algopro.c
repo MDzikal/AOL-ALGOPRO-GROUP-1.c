@@ -72,5 +72,29 @@ char username[30], password[30];
 
     sprintf(plat, "%s %d %s", hurufDepan, angka, hurufBelakang);
 
+    do {
+        total = 0;
+        system("cls");
+
+        printf("====================================\n");
+        printf("          CAR WASH SYSTEM \n");
+        printf("====================================\n");
+        printf("Pilih jenis cuci mobil:\n");
+        printf("1. Cuci Ekonomi     - Rp 50.000\n");
+        printf("2. Cuci Reguler     - Rp 250.000\n");
+        printf("3. Cuci Premium     - Rp 350.000\n");
+        printf("------------------------------------\n");
+        printf("Masukkan pilihan Anda (1-3): ");
+        scanf("%d", &pilihan);
+
+        switch (pilihan) {
+            case 1: total = 50000; break;
+            case 2: total = 250000; break;
+            case 3: total = 350000; break;
+            default: 
+                printf("Pilihan tidak valid!\n");
+                continue;
+        }
+
     return 0;
 }
