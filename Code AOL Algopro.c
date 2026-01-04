@@ -26,6 +26,42 @@ void formatRupiah(int num, char *buffer) {
 }
 
 int main() {
+char username[30], password[30];
+    char loginUser[30], loginPass[30];
+    char hurufDepan[5], hurufBelakang[10];
+    char plat[20];
+    int angka;
+    int pilihan, tambahan, total;
+    char ulang;
+    char totalFormat[50];
+    
+    printf("====================================\n");
+    printf("       REGISTRASI CAR WASH APP\n");
+    printf("====================================\n");
+    printf("Buat Username : ");
+    scanf("%s", username);
+    printf("Buat Password : ");
+    scanf("%s", password);
+
+    system("cls");
+
+    printf("====================================\n");
+    printf("            LOGIN AKUN\n");
+    printf("====================================\n");
+
+    while (1) {
+        printf("Masukkan Username : ");
+        scanf("%s", loginUser);
+        printf("Masukkan Password : ");
+        scanf("%s", loginPass);
+
+        if (strcmp(loginUser, username) == 0 && strcmp(loginPass, password) == 0) {
+            printf("\nLogin berhasil! Selamat datang, %s\n\n", loginUser);
+            break;
+        } else {
+            printf("\nUsername atau Password salah! Silakan coba lagi.\n\n");
+        }
+    }
 
     return 0;
 }
