@@ -11,12 +11,11 @@ void clearScreen() {
 }
 
 void formatRupiah(int num, char *buffer) {
-    char temp[50];
+    char temp[50]; rev[50];
     int i, j = 0, len, pos = 0;
 
     sprintf(temp, "%d", num);
     len = strlen(temp);
-    char rev[50];
 
     for (i = len - 1; i >= 0; i--) {
         rev[pos++] = temp[i];
@@ -27,9 +26,9 @@ void formatRupiah(int num, char *buffer) {
     rev[pos] = '\0';
 
     len = strlen(rev);
-    for (i = len - 1; i >= 0; i--) {
+    for (i = len - 1; i >= 0; i--) 
         buffer[j++] = rev[i];
-    }
+    
     buffer[j] = '\0';
 }
 
@@ -123,51 +122,47 @@ clearScreen();
 
    
 int main() {
-char username[30], password[30];
-    char loginUser[30], loginPass[30];
+    char username[30], password[30];
     char hurufDepan[5], hurufBelakang[10];
-    char plat[20];
+    char plat[30];
     int angka;
     int pilihan, tambahan, total;
-    char ulang;
-    char totalFormat[50];
-    
-    printf("====================================\n");
-    printf("       REGISTRASI CAR WASH APP\n");
-    printf("====================================\n");
-    printf("Buat Username : ");
-    scanf("%s", username);
-    printf("Buat Password : ");
-    scanf("%s", password);
-
-    system("cls");
-
-    printf("====================================\n");
-    printf("            LOGIN AKUN\n");
-    printf("====================================\n");
+    char jenis[20], tambahanText[20], totalFormat[50];
+    int menu;
+    char daftar;
 
     while (1) {
-        printf("Masukkan Username : ");
-        scanf("%s", loginUser);
-        printf("Masukkan Password : ");
-        scanf("%s", loginPass);
+        clearScreen();
+        printf("====================================\n");
+        printf("              LOGIN AKUN             \n");
+        printf("====================================\n");
 
-        if (strcmp(loginUser, username) == 0 && strcmp(loginPass, password) == 0) {
-            printf("\nLogin berhasil! Selamat datang, %s\n\n", loginUser);
+        printf("Username : ");
+        scanf("%s", username);
+        printf("Password : ");
+        scanf("%s", password);
+
+        if (checkLogin(username, password)) {
             break;
+        }
+
+        if (!userExists(username)) {
+            printf("\nAkun tidak ditemukan.\n");
+            printf("Buat akun baru? (y/n): ");
+            scanf(" %c", &daftar);
+
+            if (daftar == 'y' || daftar == 'Y') {
+                saveUser(username, password);
+                printf("Akun berhasil dibuat.\n");
+                printf("Tekan ENTER untuk login...");
+                getchar(); getchar();
+            }
         } else {
-            printf("\nUsername atau Password salah! Silakan coba lagi.\n\n");
+            printf("\nPassword salah.\n");
+            printf("Tekan ENTER untuk coba lagi...");
+            getchar(); getchar();
         }
     }
-
-    printf("Masukkan huruf depan plat : ");
-    scanf("%s", hurufDepan);
-    printf("Masukkan angka plat       : ");
-    scanf("%d", &angka);
-    printf("Masukkan huruf belakang   : ");
-    scanf("%s", hurufBelakang);
-
-    sprintf(plat, "%s %d %s", hurufDepan, angka, hurufBelakang);
 
     do {
         total = 0;
