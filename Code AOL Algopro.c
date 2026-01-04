@@ -83,6 +83,43 @@ void showHistory(const char *username) {
     FILE *fp = fopen("history.txt", "r");
     char line[200];
     int found = 0;
+clearScreen();
+    printf("====================================\n");
+    printf("        RIWAYAT AKTIVITAS AKUN        \n");
+    printf("====================================\n");
+
+    if (!fp) {
+        printf("Belum ada riwayat transaksi.\n");
+        return;
+    }
+
+    while (fgets(line, sizeof(line), fp)) {
+        char u[30], plat[30], jenis[30], tambahan[30];
+        int total;
+
+        sscanf(line, "%[^|]|%[^|]|%[^|]|%[^|]|%d",
+               u, plat, jenis, tambahan, &total);
+
+        if (strcmp(u, username) == 0) {
+            char totalFormat[50];
+            formatRupiah(total, totalFormat);
+
+            printf("Plat Mobil  : %s\n", plat);
+            printf("Jenis Cuci  : %s\n", jenis);
+            printf("Tambahan    : %s\n", tambahan);
+            printf("Total Bayar : Rp %s\n", totalFormat);
+            printf("------------------------------------\n");
+            found = 1;
+        }
+    }
+    fclose(fp);
+
+    if (!found)
+        printf("Belum ada transaksi untuk akun ini.\n");
+
+    printf("\nTekan ENTER untuk kembali ke menu...");
+    getchar(); getchar();
+}
 
    
 int main() {
