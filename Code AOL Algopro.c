@@ -63,5 +63,14 @@ char username[30], password[30];
         }
     }
 
+    printf("Masukkan huruf depan plat : ");
+    scanf("%s", hurufDepan);
+    printf("Masukkan angka plat       : ");
+    scanf("%d", &angka);
+    printf("Masukkan huruf belakang   : ");
+    scanf("%s", hurufBelakang);
+
+    sprintf(plat, "%s %d %s", hurufDepan, angka, hurufBelakang);
+
     return 0;
 }
