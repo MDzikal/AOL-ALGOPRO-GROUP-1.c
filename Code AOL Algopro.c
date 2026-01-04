@@ -192,6 +192,7 @@ int main() {
             scanf("%s", hurufBelakang);
 
             sprintf(plat, "%s %d %s", hurufDepan, angka, hurufBelakang);
+            
             printf("\nJenis Cuci:\n");
             printf(" [1] Ekonomi  - Rp 50.000\n");
             printf(" [2] Reguler  - Rp 250.000\n");
